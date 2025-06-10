@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'custom_card.dart';
+import 'gender_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
@@ -64,46 +66,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class GenderCard extends StatelessWidget {
-  const GenderCard({required this.icon, required this.text});
-
-  final IconData? icon;
-  final String? text;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: Colors.green[300], size: 80.0),
-        SizedBox(height: 10.0),
-        Text(
-          '$text',
-          style: TextStyle(fontSize: 20.0, color: Colors.green[300]),
-        ),
-      ],
-    );
-  }
-}
-
-class CustomCard extends StatelessWidget {
-  const CustomCard({required this.colour, this.cardChild});
-
-  final Color? colour;
-  final Widget? cardChild;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: cardChild,
     );
   }
 }
