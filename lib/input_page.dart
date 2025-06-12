@@ -3,6 +3,7 @@ import 'custom_card.dart';
 import 'gender_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
+import 'buttons.dart';
 
 enum GenderType { male, female }
 
@@ -123,7 +124,22 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: Row(
                   children: [
-                    Expanded(child: CustomCard(colour: kInactiveCardColor)),
+                    Expanded(
+                      child: CustomCard(
+                        colour: kInactiveCardColor,
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('WEIGHT', style: kTextStyle),
+                            Buttons(
+                              iconMinus: FontAwesomeIcons.squareMinus,
+                              weight: 50,
+                              iconPlus: FontAwesomeIcons.squarePlus,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     Expanded(child: CustomCard(colour: kInactiveCardColor)),
                   ],
                 ),
