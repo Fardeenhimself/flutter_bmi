@@ -4,8 +4,8 @@ import 'gender_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
-const inactiveCardColor = Color(0xFF50C878);
-const activeCardColour = Color(0xFFd3ffce);
+const inactiveCardColor = Color(0xFFd3ffce);
+const activeCardColour = Color(0xFF50C878);
 
 enum GenderType { male, female }
 
@@ -53,52 +53,46 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
+                      child: CustomCard(
+                        onPress: () {
                           setState(() {
                             selectedGender = GenderType.male;
-                            //print('male selected');
                           });
                         },
-                        child: CustomCard(
-                          cardChild: GenderCard(
-                            icon: FontAwesomeIcons.mars,
-                            text: 'MALE',
-                          ),
-                          colour: selectedGender == GenderType.male
-                              ? activeCardColour
-                              : inactiveCardColor,
+                        cardChild: GenderCard(
+                          icon: FontAwesomeIcons.mars,
+                          text: 'MALE',
                         ),
+                        colour: selectedGender == GenderType.male
+                            ? activeCardColour
+                            : inactiveCardColor,
                       ),
                     ),
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
+                      child: CustomCard(
+                        onPress: () {
                           setState(() {
                             selectedGender = GenderType.female;
-                            //print('female selected');
                           });
                         },
-                        child: CustomCard(
-                          cardChild: GenderCard(
-                            icon: FontAwesomeIcons.venus,
-                            text: 'FEMALE',
-                          ),
-                          colour: selectedGender == GenderType.female
-                              ? activeCardColour
-                              : inactiveCardColor,
+                        cardChild: GenderCard(
+                          icon: FontAwesomeIcons.venus,
+                          text: 'FEMALE',
                         ),
+                        colour: selectedGender == GenderType.female
+                            ? activeCardColour
+                            : inactiveCardColor,
                       ),
                     ),
                   ],
                 ),
               ),
-              Expanded(child: CustomCard(colour: activeCardColour)),
+              Expanded(child: CustomCard(colour: inactiveCardColor)),
               Expanded(
                 child: Row(
                   children: [
-                    Expanded(child: CustomCard(colour: activeCardColour)),
-                    Expanded(child: CustomCard(colour: activeCardColour)),
+                    Expanded(child: CustomCard(colour: inactiveCardColor)),
+                    Expanded(child: CustomCard(colour: inactiveCardColor)),
                   ],
                 ),
               ),
