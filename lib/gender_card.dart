@@ -5,7 +5,7 @@ const iconColor = Color(0xFF355E3B);
 const iconSize = 80.0;
 
 class GenderCard extends StatelessWidget {
-  const GenderCard({required this.icon, required this.text});
+  const GenderCard({super.key, required this.icon, required this.text});
 
   final IconData? icon;
   final String? text;

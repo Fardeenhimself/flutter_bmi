@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({required this.colour, this.cardChild, this.onPress});
+  const CustomCard({super.key, required this.colour, this.cardChild, this.onPress});
 
   final Color? colour;
   final Widget? cardChild;
