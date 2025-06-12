@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
-const textStyle = TextStyle(fontSize: 20.0, color: Color(0xFF355E3B));
-const iconColor = Color(0xFF355E3B);
-const iconSize = 80.0;
+import 'constants.dart';
 
 class GenderCard extends StatelessWidget {
   const GenderCard({super.key, required this.icon, required this.text});
@@ -14,9 +11,9 @@ class GenderCard extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, color: iconColor, size: iconSize),
+        Icon(icon, color: iconColor, size: kIconSize),
         SizedBox(height: 10.0),
-        Text('$text', style: textStyle),
+        Text('$text', style: kTextStyle),
       ],
     );
   }
