@@ -3,7 +3,7 @@ import 'custom_card.dart';
 import 'gender_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
-import 'buttons.dart';
+import 'round_icon_button.dart';
 
 enum GenderType { male, female }
 
@@ -139,21 +139,99 @@ class _InputPageState extends State<InputPage> {
                   children: [
                     Expanded(
                       child: CustomCard(
-                        colour: kInactiveCardColor,
                         cardChild: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('WEIGHT', style: kTextStyle),
-                            Buttons(
-                              iconMinus: FontAwesomeIcons.squareMinus,
-                              weight: 50,
-                              iconPlus: FontAwesomeIcons.squarePlus,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Text(
+                                  '$currentWeight',
+                                  style: kHeightNumberStyle,
+                                ),
+                                Text('KG', style: kTextStyle),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                RoundIconButton(
+                                  icon: FontAwesomeIcons.minus,
+                                  onPressed: () {
+                                    setState(() {
+                                      if (currentWeight > 0) {
+                                        currentWeight--;
+                                      }
+                                    });
+                                  },
+                                ),
+                                SizedBox(width: 10.0),
+                                RoundIconButton(
+                                  icon: FontAwesomeIcons.plus,
+                                  onPressed: () {
+                                    setState(() {
+                                      if (currentWeight < 500) {
+                                        currentWeight++;
+                                      }
+                                    });
+                                  },
+                                ),
+                              ],
                             ),
                           ],
                         ),
+                        colour: kInactiveCardColor,
                       ),
                     ),
-                    Expanded(child: CustomCard(colour: kInactiveCardColor)),
+                    Expanded(
+                      child: CustomCard(
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('AGE', style: kTextStyle),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Text('$currentAge', style: kHeightNumberStyle),
+                                Text('Y/O', style: kTextStyle),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                RoundIconButton(
+                                  icon: FontAwesomeIcons.minus,
+                                  onPressed: () {
+                                    setState(() {
+                                      if (currentAge > 4) {
+                                        currentAge--;
+                                      }
+                                    });
+                                  },
+                                ),
+                                SizedBox(width: 10.0),
+                                RoundIconButton(
+                                  icon: FontAwesomeIcons.plus,
+                                  onPressed: () {
+                                    setState(() {
+                                      if (currentAge < 100) {
+                                        currentAge++;
+                                      }
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        colour: kInactiveCardColor,
+                      ),
+                    ),
                   ],
                 ),
               ),
