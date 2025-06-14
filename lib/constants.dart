@@ -11,4 +11,5 @@ const kIconSize = 80.0;
 const kHeightNumberStyle = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.w900,
+  color: Color(0xFF355E3B),
 );
