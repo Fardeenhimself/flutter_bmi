@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class ResultButton extends StatelessWidget {
-  ResultButton({required this.onTap, required this.buttonText});
+  const ResultButton({super.key, required this.onTap, required this.buttonText});
 
   final VoidCallback? onTap;
   final String? buttonText;

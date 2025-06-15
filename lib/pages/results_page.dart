@@ -4,8 +4,15 @@ import '../components/custom_card.dart';
 import '../components/result_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+  const ResultsPage({
+    required this.showResult,
+    required this.showValue,
+    required this.showSummary,
+  });
 
+  final String? showResult;
+  final String? showValue;
+  final String? showSummary;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,13 +36,17 @@ class ResultsPage extends StatelessWidget {
                   cardChild: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text('Normal', style: kDecisionText),
-                      Text('18.8', style: kResultStyle),
                       Text(
-                        'Your BMI is low. Maintain proper diet.',
+                        '${showResult?.toUpperCase()}',
+                        style: kDecisionText,
+                      ),
+                      Text('$showValue', style: kResultStyle),
+                      Text(
+                        '$showSummary',
                         style: kResultSummaryStyle,
                         textAlign: TextAlign.center,
                       ),
+                      Text('Normal range ~18.5 - 25 ', style: kDecisionText),
                     ],
                   ),
                 ),
