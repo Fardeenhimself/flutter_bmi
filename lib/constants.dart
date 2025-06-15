@@ -40,3 +40,4 @@ const kResultStyle = TextStyle(
 );
 
 const kResultSummaryStyle = TextStyle(fontSize: 25.0, color: Colors.green);
+const kWeightButtonStyle = TextStyle(fontSize: 20.0, color: Color(0xFF355E3B));

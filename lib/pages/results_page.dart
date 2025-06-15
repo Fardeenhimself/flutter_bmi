@@ -4,7 +4,7 @@ import '../components/custom_card.dart';
 import '../components/result_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({
+  const ResultsPage({super.key, 
     required this.showResult,
     required this.showValue,
     required this.showSummary,

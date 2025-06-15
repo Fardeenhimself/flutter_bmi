@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/components/choose_weight_button.dart';
 import 'package:flutter/material.dart';
 import '../components/custom_card.dart';
 import '../components/gender_card.dart';
@@ -20,28 +21,12 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   GenderType? selectedGender;
 
+  bool isKgSelected = true;
+  int currentKgWeight = 60;
+  int currentLbWeight = 132;
+  int currentAge = 18;
+
   double currentSlidervalue = 170;
-
-  // Color maleCardColour = inactiveCardColor;
-  // Color femaleCardColour = inactiveCardColor;
-
-  // void updateCardColor(gender) {
-  //   if (gender == GenderType.male) {
-  //     if (maleCardColour == inactiveCardColor) {
-  //       maleCardColour = activeCardColour;
-  //       femaleCardColour = inactiveCardColor;
-  //     } else {
-  //       maleCardColour = inactiveCardColor;
-  //     }
-  //   } else if (gender == GenderType.female) {
-  //     if (femaleCardColour == inactiveCardColor) {
-  //       femaleCardColour = activeCardColour;
-  //       maleCardColour = inactiveCardColor;
-  //     } else {
-  //       femaleCardColour = inactiveCardColor;
-  //     }
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -148,37 +133,69 @@ class _InputPageState extends State<InputPage> {
                             Text('WEIGHT', style: kTextStyle),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.baseline,
-                              textBaseline: TextBaseline.alphabetic,
-                              children: [
-                                Text(
-                                  '$currentWeight',
-                                  style: kHeightNumberStyle,
-                                ),
-                                Text('KG', style: kTextStyle),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 RoundIconButton(
                                   icon: FontAwesomeIcons.minus,
                                   onPressed: () {
                                     setState(() {
-                                      if (currentWeight > 0) {
-                                        currentWeight--;
+                                      if (isKgSelected == true) {
+                                        if (currentKgWeight > 0) {
+                                          currentKgWeight--;
+                                        }
+                                      } else {
+                                        if (currentLbWeight > 0) {
+                                          currentLbWeight--;
+                                        }
                                       }
                                     });
                                   },
                                 ),
-                                SizedBox(width: 10.0),
+                                Expanded(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      isKgSelected
+                                          ? '$currentKgWeight'
+                                          : '$currentLbWeight',
+                                      style: kHeightNumberStyle,
+                                    ),
+                                  ),
+                                ),
                                 RoundIconButton(
                                   icon: FontAwesomeIcons.plus,
                                   onPressed: () {
                                     setState(() {
-                                      if (currentWeight < 500) {
-                                        currentWeight++;
+                                      if (isKgSelected == true) {
+                                        if (currentKgWeight < 500) {
+                                          currentKgWeight++;
+                                        }
+                                      } else {
+                                        if (currentLbWeight < 1000) {
+                                          currentLbWeight++;
+                                        }
                                       }
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ChooseWeightButton(
+                                  weightName: 'Kg',
+                                  weightScale: () {
+                                    setState(() {
+                                      isKgSelected = true;
+                                    });
+                                  },
+                                ),
+                                Text('/', style: kWeightButtonStyle),
+                                ChooseWeightButton(
+                                  weightName: 'Lb',
+                                  weightScale: () {
+                                    setState(() {
+                                      isKgSelected = false;
                                     });
                                   },
                                 ),
@@ -198,7 +215,7 @@ class _InputPageState extends State<InputPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.baseline,
-                              textBaseline: TextBaseline.alphabetic,
+                              textBaseline: TextBaseline.ideographic,
                               children: [
                                 Text('$currentAge', style: kHeightNumberStyle),
                                 Text('Y/O', style: kTextStyle),
@@ -217,7 +234,7 @@ class _InputPageState extends State<InputPage> {
                                     });
                                   },
                                 ),
-                                SizedBox(width: 10.0),
+
                                 RoundIconButton(
                                   icon: FontAwesomeIcons.plus,
                                   onPressed: () {
@@ -242,15 +259,20 @@ class _InputPageState extends State<InputPage> {
                 onTap: () {
                   BmiBrain calculate = BmiBrain(
                     height: currentSlidervalue,
-                    weight: currentWeight,
+                    weightInKg: currentKgWeight,
+                    weightInLb: currentLbWeight,
                   );
+
+                  final bmiResult = isKgSelected
+                      ? calculate.bmiForKg()
+                      : calculate.bmiForLb();
 
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) {
                         return ResultsPage(
-                          showValue: calculate.calculateBmi(),
+                          showValue: bmiResult,
                           showResult: calculate.getResult(),
                           showSummary: calculate.getSummary(),
                         );
