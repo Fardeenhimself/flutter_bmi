@@ -45,7 +45,7 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('BMI Calculator')),
+      appBar: AppBar(title: Text('BMI CALCULATOR')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
