@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 class ResultButton extends StatelessWidget {
   ResultButton({required this.onTap, required this.buttonText});

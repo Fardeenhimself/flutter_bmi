@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'custom_card.dart';
-import 'gender_card.dart';
+import '../components/custom_card.dart';
+import '../components/gender_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
-import 'round_icon_button.dart';
-import 'result_button.dart';
+import '../constants.dart';
+import '../components/round_icon_button.dart';
+import '../components/result_button.dart';
 import 'results_page.dart';
 
 enum GenderType { male, female }
