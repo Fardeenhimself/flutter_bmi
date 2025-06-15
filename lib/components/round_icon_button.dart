@@ -4,7 +4,11 @@ int currentWeight = 61;
 int currentAge = 18;
 
 class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({super.key, required this.icon, required this.onPressed});
+  const RoundIconButton({
+    super.key,
+    required this.icon,
+    required this.onPressed,
+  });
 
   final IconData? icon;
   final VoidCallback? onPressed;
