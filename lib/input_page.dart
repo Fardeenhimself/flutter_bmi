@@ -4,6 +4,8 @@ import 'gender_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'round_icon_button.dart';
+import 'result_button.dart';
+import 'results_page.dart';
 
 enum GenderType { male, female }
 
@@ -43,7 +45,7 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('BMI Calculator'), centerTitle: true),
+      appBar: AppBar(title: Text('BMI Calculator')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -235,11 +237,18 @@ class _InputPageState extends State<InputPage> {
                   ],
                 ),
               ),
-              Container(
-                color: Color(0xFF91f086),
-                margin: EdgeInsets.only(top: 10.0),
-                width: double.infinity,
-                height: kBottomContainerHeight,
+              ResultButton(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ResultsPage();
+                      },
+                    ),
+                  );
+                },
+                buttonText: 'CALCULATE',
               ),
             ],
           ),

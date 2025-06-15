@@ -14,6 +14,7 @@ class BMICalculator extends StatelessWidget {
         appBarTheme: AppBarTheme(
           elevation: 4.0,
           shadowColor: Theme.of(context).colorScheme.shadow,
+          centerTitle: true,
         ),
       ),
       home: InputPage(),
